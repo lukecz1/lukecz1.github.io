@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoRay Part Detector</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <!-- ---------------------------------------Header---------------------------------------------------- -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='darklogo.webp') }}" alt="VideoRay Logo">
+        </div>
+        <h1>VideoRay Part Detector</h1>
+        <!-- Nav Bar Tabs -->
+        <nav>
+            <a href="#what-we-do">What We Do</a>
+            <a href="#object-detection">Object Detection</a>
+            <a href="#how-to-use">How to Use</a>
+            <a href="https://videoray.com/about-us/news/" target="_blank">Get News</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        
+    </header>
+
+    <main class="container">
+        <h2>Welcome To VideoRay Part Detector</h2>
+        <hr>
+
+        <!-- About VideoRay -->
+        <section id="about-us" class="section about-us">
+            <h3>About VideoRay</h3>
+            <p>Established in 1999, VideoRay has been a global leader in underwater remotely operated vehicle (ROV) technology...</p>
+        </section>
+
+        <!-- VideoRay's Market -->
+        <section id="what-we-do" class="section what-we-do">
+            <h3>What is VideoRay?</h3>
+            <div class="teaser-image">
+                <img src="{{ url_for('static', filename='defenderpic.jpg') }}" alt="VideoRay Defender">
+            </div>
+            <p>VideoRay is a leading provider of advanced underwater remotely operated vehicles (ROVs)...</p>
+        </section>
+
+        <!-- Object Detection Description -->
+        <section id="object-detection" class="section object-detection-description">
+            <h3>Object Detection and Automation</h3>
+            <div class="teaser-image">
+                <img src="{{ url_for('static', filename='OD_teaser.png') }}" alt="Object Detection Teaser">
+            </div>
+            <p>At VideoRay, we harness cutting-edge object detection technology to revolutionize underwater inspections and maintenance...</p>
+        </section>
+
+        <!-- How to Use File Upload to Process Image -->
+        <section id="how-to-use" class="section how-to-use">
+            <h3>VideoRay Part Detector with Files</h3>
+            <div class="how-to-use">
+                <ul>
+                    <li><strong>Upload an Image:</strong> Select an image file containing the object you want to detect.</li>
+                    <li><strong>Process Image:</strong> Initiate the scanning process to analyze the environment.</li>
+                    <li><strong>File Results:</strong> Review the detected objects information on the display.</li>
+                </ul>
+            </div>
+            <hr>
+
+            <!-- File Processing Info -->
+            <div class="buttons-container">
+                <form id="upload-form" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="image" id="image" accept="image/*" required>
+                    <div id="process-button-container" style="display: none;">
+                        <button type="submit" id="process-button">Process Image</button>
+                    </div>
+
+                    <p id="file-name-display" style="display: none;"></p>
+
+                    <div id="processing-info" style="display: none;"></div>
+                    
+                </form>
+                <img id="preview-image" src="" alt="Image Preview" style="display: none;">
+                <div id="processed-image-container">
+                    <img id="processed-image" src="" alt="Processed Image - Click to Enlarge" style="display: none; cursor: pointer;">
+                    <p class="click-to-enlarge" style="display: none; cursor: pointer;">Click to Enlarge</p>
+                </div>
+                
+                <!-- Upload Modal -->
+                <div id="image-modal" class="modal">
+                    <span class="close">&times;</span>
+                    <div class="modal-content-wrapper">
+                        <img class="modal-content" id="modal-image" src="">
+                        <div id="survey-form" class="survey-form">
+                            <!-- Feedback form will be dynamically inserted here -->
+                            <div id="feedback-container"></div>
+                            <!-- <div id="feedback-message" style="display: none;"></div> -->
+                            <div id="feedback-message" class="thank-you-message" style="display: none;"></div>                            
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+      <!-- How to Use Webcam -->
+<section id="how-to-use2" class="section how-to-use2">
+    <div class="how-to-use2">
+        <ul>
+            <li class="list-title">Part Detector with Live Interface</li>
+            <li><strong>Or Use Webcam:</strong> Alternatively, enable your webcam to capture live video for real-time detection.</li>
+            <li><strong>View Results:</strong> The detected objects will be highlighted in the output image or video.</li>
+        </ul>
+    </div>
+    <hr>
+    
+    <!-- Webcam Feed and Controls -->
+    <div class="webcam-container">
+        <!-- Webcam Feed -->
+        <div class="webcam-feed-container">
+            <img id="dark-logo" src="{{ url_for('static', filename='darklogo.webp') }}" alt="VideoRay Logo" class="dark-logo">
+            <video id="webcam-feed" style="display: none;" autoplay></video>
+            <img id="webcam-feed" src="#" alt="Webcam Feed">
+        </div>
+        
+        <!-- Webcam Start/Stop Buttons -->
+        <div class="buttons-container2">
+            <button id="enable-webcam" style="display: block;">Start Webcam</button>
+            <button id="terminate-webcam" style="display: none;">Stop Webcam</button>
+            <button id="capture-button" style="display: none;">Capture Image</button>
+        </div>
+    </div>
+
+    <!-- Processed Image Display -->
+    <div id="processed-image-container2" class="image-container">
+        <img id="processed-image2" src="" alt="Processed Image2" style="display: none; cursor: pointer;">
+        <p class="click-to-enlarge2" style="display: none; cursor: pointer;">Click to Enlarge</p>
+    </div>
+    
+    <div id="info-container"></div>
+
+   <!-- Webcam Modal -->
+    <div id="image-modal2" class="modal">
+        <span class="close2">&times;</span>
+        <div class="modal-content-wrapper2">
+            <img class="modal-content2" id="modal-image2" src="">
+            <div id="goofy-question-container">
+            <!-- Goofy question will be inserted here -->
+                <!-- Placeholder for feedback message and button -->
+            <div id="feedback-response-container" style="display: none;">
+            <!-- Feedback message and button will be inserted here -->
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- --------------------------------------------------Footer------------------------------------------------------ -->
+    <footer id="contact">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="static/vrlogo.png" alt="Error opening picture">
+            </div>
+
+            <div class="signature-container">
+                <div class="name-title">Luke Czachor</div>
+                <div class="contact-info">Computer Science Intern</div>
+                <div class="contact-info">
+                    <span>[Mobile] +1 (610)-659-7772</span>
+                </div>
+
+                <div class="address">212 East High Street, Pottstown, PA 19464</div>
+                <div class="contact-info">
+                    <a href="http://www.videoray.com">www.videoray.com</a> | <a href="https://www.linkedin.com">Follow me on LinkedIn</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="confidentiality-notice">
+            CONFIDENTIAL AND PROPRIETARY – This message is strictly confidential, and any information contained herein is proprietary to VideoRay LLC. The content and use are restricted to the designated recipient(s). The unauthorized use or disclosure, copy, reproduction, or transmittal by any process without prior written notice of the author or VideoRay is strictly prohibited. If you are not the intended recipient, please promptly notify the sender by reply e-mail, do not use, disclose, copy, or distribute this email or attachments, and immediately delete this message from your system.
+            <br><br>
+            Information that is restricted cannot be transmitted via email. Restricted information includes, but is not limited to, Controlled Unclassified Information (CUI), ITAR and export-controlled information. Should the need to share restricted data be necessary, please call your VideoRay contact to discuss other options. Violations of export laws and regulations are subject to severe civil and criminal penalties.
+        </div>
+
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    </body>
+
+</html>

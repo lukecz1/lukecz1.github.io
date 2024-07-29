@@ -1,0 +1,674 @@
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    color: #fff; /* Light text color */
+    background: url('oceand.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    font-weight: 300;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    backdrop-filter: blur(5px); /* Slight blur effect */
+    z-index: 1;
+}
+
+header, .container, footer {
+    position: relative;
+    z-index: 2;
+}
+
+header {
+    background-color: rgba(68, 68, 68, 0.8);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Spread items horizontally */
+}
+
+header h1 {
+    margin: 0;
+    padding-left: 65px;
+    flex: 1; /* Take up remaining space */
+}
+
+header nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex: 2; /* Take up remaining space */
+    justify-content: center; /* Center items horizontally */
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+header nav a:hover {
+    color: #0073e6;
+}
+
+.container {
+    padding: 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    text-align: left; /* Align logo to left */
+    margin-right: auto; /* Push other content to right */
+}
+
+.logo-container img {
+    max-width: 300px;
+    height: auto;
+}
+
+.signature-container {
+    flex: 2;
+    line-height: 1.5;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Divider line */
+}
+
+.about-us,
+.what-we-do,
+.object-detection-description,
+.how-to-use {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 80%;
+}
+
+.teaser-image {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.teaser-image img {
+    max-width: 40%;
+    height: auto;
+    border: 2px solid #fff;
+}
+
+.how-to-use {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 185px; 
+}
+
+.how-to-use h3 {
+    margin-bottom: 10px;
+    font-size: 1.45em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 0px;
+}
+
+.how-to-use ul {
+    list-style-type: none;
+    padding-top: 50px; 
+    margin-left: -700px; 
+}
+
+.how-to-use ul li {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.how-to-use2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Added margin to separate from previous section */
+}
+
+.how-to-use2 ul {
+    padding-left: 220px;
+    list-style-type: none;
+    text-align: left; /* Align list items to left */
+    max-width: 60%; /* Limit width of list */
+}
+
+.how-to-use2 ul li {
+    margin-left: 0px;
+    margin-bottom: 20px;
+    line-height: 1.6; /* Improved readability with increased line height */
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding-left: 120px;
+}
+
+.buttons-container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding-right: 100px;
+}
+
+.buttons-container input,
+.buttons-container button,
+.buttons-container2 input,
+.buttons-container2 button {
+    margin-bottom: 10px;
+    width: 250px;
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #f7f7f7;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.buttons-container input:hover,
+.buttons-container button.enabled:hover,
+.buttons-container2 input:hover,
+.buttons-container2 button.enabled:hover {
+    background-color: #005bb5;
+    box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+}
+
+.buttons-container button.enabled,
+.buttons-container2 button.enabled {
+    cursor: pointer;
+}
+
+#preview-image,
+#video-preview {
+    margin-left: 85px;
+    max-width: 120px;
+    height: auto;
+    border: 2px solid #fff;
+    display: none;
+    margin-top: 10px;
+}
+/* ------------------------------------------- check ---------------------------------*/
+#processed-image {
+    cursor: pointer;
+    max-width: 80%;
+    min-width: 50%;
+    height: auto;
+    border: 2px solid #fff;
+    display: none;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+footer {
+    background-color: rgba(68, 68, 68, 0.8);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #ccc;
+    border-top: 1px solid #555;
+}
+
+footer a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+hr.new1 {
+    border-top: 1px solid #e9e9e9;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#process-button-container {
+    text-align: center;
+}
+
+#webcam-feed {
+    display: none; /* initially hide the webcam feed */
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    height: auto;
+}
+
+.buttons-container2 button:hover {
+    background-color: #005bb5;
+    box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+}
+
+
+.buttons-container button:hover {
+    background-color: #005bb5;
+    box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+}
+
+.webcam-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.webcam-feed-container {
+    position: relative;
+    border: 0px solid #fff; /* Border around the webcam feed */
+    overflow: hidden; /* Ensure the border doesn't extend past the container */
+    margin-bottom: 20px; 
+}
+
+#webcam-feed {
+    max-width: 75%; /* Ensure webcam feed fits within its container */
+    height: auto;
+    display: none; /* Initially hide webcam feed */
+}
+
+#dark-logo {
+    position: absolute;
+    padding-right: 50px;
+    bottom: 10px; 
+    right: 40px; 
+    max-width: 100px; /* Set maximum width for the logo */
+    height: auto;
+    z-index: 1; /* Ensure the logo is above the webcam feed */
+}
+.list-title {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.45em;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+}
+
+/* position the "Click to Enlarge" label below the image */
+#processed-image-container {
+    position: relative;
+    text-align: center;
+    cursor: pointer; 
+}
+
+.click-to-enlarge {
+    cursor: pointer; 
+    margin-top: 5px;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content Wrapper */
+.modal-content-wrapper {
+    padding-top: 105px;
+}
+
+#image-modal {
+    display: none; /* Hidden by default */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    max-width: 640px; /* Limit the width of the modal content */
+    max-height: 480px; /* Limit the height of the modal content */
+    float: left;
+    padding-left: 100px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #f50707;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Survey Form Styles */
+.survey-form {
+    padding-top: 100px;
+    position: absolute;
+    top: 150px;
+    right: 15px;
+    color: #aaa;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.survey-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+
+.survey-button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+/* Styles for the Thank You message */
+.thank-you-message {
+    font-size: 18px; /* Adjust the font size as needed */
+    color: #4CAF50; /* Set text color, green in this case */
+    background-color: #f0f8f0; /* Light green background */
+    border: 1px solid #4CAF50; /* Border matching the text color */
+    border-radius: 5px; /* Rounded corners for the message box */
+    padding: 10px; /* Space inside the message box */
+    margin: 20px 0; /* Space outside the message box */
+    text-align: center; /* Center align the text */
+    font-weight: bold; /* Make the text bold */
+}
+
+#status-message {
+    color: #4CAF50; /* Green text */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Modal Container */
+#image-modal2 {
+    display: none; /* Hide by default */
+    position: fixed; /* Fix the modal to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    z-index: 1000; /* Make sure it's on top of other content */
+    overflow: auto; /* Allow scrolling if necessary */
+}
+
+/* Modal Content  (inside) */
+.modal-content-wrapper2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content */
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* Expanded Image */
+.modal-content2 {
+    width: 100%; /* Scale with the wrapper */
+    height: auto; /* Maintain aspect ratio */
+    border: 2px solid white; /* Optional: border for visibility */
+}
+
+/* Close Button */
+.close2 {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Modal Content (image) */
+#captured-image-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    max-width: 100%; /* Ensure it doesn't overflow modal */
+    max-height: 100%; /* Ensure it doesn't overflow modal */
+    margin: 0 auto; /* Center the container itself if needed */
+    padding: 20px; /* Optional padding for spacing */
+}
+
+#captured-image-container img {
+    max-width: 100%; /* Ensure image doesn't exceed container width */
+    max-height: 100%; /* Ensure image doesn't exceed container height */
+    border: 2px solid white; /* Optional border for aesthetics */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for aesthetics */
+    margin: 0 auto; /* Center the image itself if needed */
+    display: block; /* Ensure image is block element */
+}
+
+.close2:hover,
+.close2:focus {
+    color: #f50707;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#processed-image-container2 {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust gap as needed */
+}
+
+#processed-image2 {
+    margin-top: 50px;
+    margin-right: 150px;
+    max-width: 200px; /* Adjust size as needed */
+    max-height: 200px; /* Adjust size as needed */
+    border: 2px solid #ccc; /* Optional: add a border */
+    border-radius: 8px; /* Optional: rounded corners */
+    display: block;
+    cursor: pointer;
+}
+
+/* Container for processed image and text */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Processed Image */
+.processed-image {
+    max-width: 80%; /* Adjust to fit within the container */
+    height: auto;
+}
+
+/* Style for the "Start Webcam" button */
+#enable-webcam {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#enable-webcam:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Style for the "Stop Webcam" button */
+#terminate-webcam {
+    margin-left: 125px;
+    background-color: #dc3545; /* Red background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#terminate-webcam:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Style for the "Capture Image" button */
+#capture-button {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#capture-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#start-webcam-button5 {
+    margin-right: 150px;
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#start-webcam-button5:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style for the goofy question container */
+#goofy-question-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Style for the goofy question */
+#goofy-question p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5722; /* A fun color for the question */
+    margin-bottom: 10px;
+}
+
+#goofy-question input[type="radio"] {
+    margin-right: 10px;
+}
+
+#goofy-question label {
+    font-size: 16px;
+    color: #4caf50; /* A pleasant color for the labels */
+}
+
+.click-to-enlarge2 {
+    cursor: pointer; 
+    margin-top: 5px;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Define styles for the feedback messages */
+.response-message {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.response-message.yes {
+    color: green;
+}
+
+.response-message.no {
+    color: red;
+}
+
+#image-modal2 #back-to-how-to-use {
+    margin-top: 10px;
+    color: blue;
+    text-decoration: underline;
+    font-size: 25px;
+    cursor: pointer;
+}
